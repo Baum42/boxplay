@@ -9,6 +9,8 @@ QtObject {
 		gravity: Qt.point(2, 4)
 
 		pixelsPerMeter: 42
+
+		Component.onCompleted: physicsWorld.enableFastrun()
 	}
 
 	property var b1: Body {

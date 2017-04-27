@@ -1,6 +1,7 @@
 TEMPLATE = app
 
 QT += qml
+QT -= gui
 CONFIG += c++11
 
 SOURCES += main.cpp
