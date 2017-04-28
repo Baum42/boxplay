@@ -1,19 +1,30 @@
 import QtQml 2.2
 import Box2Dcore 2.0
+import boxplay2 1.0
 
-QtObject {
+Container {
 	id: rootWindow
 
-	property var world: World {
+	Component.onCompleted: printStatus();
+
+	World {
 		id: physicsWorld
 		gravity: Qt.point(2, 4)
 
 		pixelsPerMeter: 42
+		running: false
 
 		Component.onCompleted: physicsWorld.enableFastrun()
 	}
 
-	property var b1: Body {
+	Timer {
+		repeat: false
+		running: true
+		interval: 1000
+		onTriggered: physicsWorld.running = true;
+	}
+
+	Body {
 		id: boxBody
 
 		bodyType: Body.Dynamic
@@ -35,7 +46,7 @@ QtObject {
 		}
 	}
 
-	property var b2: Body {
+	Body {
 		id: body
 
 		world: physicsWorld
